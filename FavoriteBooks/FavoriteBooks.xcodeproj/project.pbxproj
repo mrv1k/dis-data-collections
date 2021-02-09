@@ -15,6 +15,7 @@
 		188F678023AC025B007E2064 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F677F23AC025B007E2064 /* Book.swift */; };
 		188F678223AC0292007E2064 /* BookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F678123AC0292007E2064 /* BookTableViewController.swift */; };
 		188F678423AC0394007E2064 /* BookFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188F678323AC0394007E2064 /* BookFormViewController.swift */; };
+		5784C91025D301D100090290 /* BookFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784C90F25D301D100090290 /* BookFormTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		188F677F23AC025B007E2064 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		188F678123AC0292007E2064 /* BookTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewController.swift; sourceTree = "<group>"; };
 		188F678323AC0394007E2064 /* BookFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFormViewController.swift; sourceTree = "<group>"; };
+		5784C90F25D301D100090290 /* BookFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookFormTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		188F676823AC01B0007E2064 /* FavoriteBooks */ = {
 			isa = PBXGroup;
 			children = (
+				5784C90F25D301D100090290 /* BookFormTableViewController.swift */,
 				188F677723AC01B1007E2064 /* Info.plist */,
 				188F676923AC01B0007E2064 /* AppDelegate.swift */,
 				188F677F23AC025B007E2064 /* Book.swift */,
@@ -100,7 +103,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					188F676523AC01B0007E2064 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5784C91025D301D100090290 /* BookFormTableViewController.swift in Sources */,
 				188F678023AC025B007E2064 /* Book.swift in Sources */,
 				188F676A23AC01B0007E2064 /* AppDelegate.swift in Sources */,
 				188F678223AC0292007E2064 /* BookTableViewController.swift in Sources */,
@@ -199,6 +203,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -259,6 +264,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
