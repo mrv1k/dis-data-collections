@@ -13,7 +13,7 @@ All starter projects are found in Apple's [Student materials](https://education-
 >
 > Excerpt From: Apple Education. “[Develop in Swift Data Collections.](https://books.apple.com/ca/book/develop-in-swift-data-collections/id1511183970)” Apple Inc. - Education, 2020. Apple Books.
 
-- [ ] Step 1. Create a Static Table View
-- [ ] Step 2. Replace `BookFormViewController​` with `BookFormTableViewController`
-- [ ] Step 3. Delete Books
+- [x] Step 1. Create a Static Table View
+- [x] Step 2. Replace `BookFormViewController​` with `BookFormTableViewController`
+- [x] Step 3. Delete Books
 - [ ] Step 4. Create a Custom Book Cell
