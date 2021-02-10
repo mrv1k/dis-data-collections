@@ -2,7 +2,7 @@ import UIKit
 
 class BookTableViewController: UITableViewController {
     
-    var books: [Book] = []
+    var books: [Book] = [Book(title: "a", author: "b", genre: "c", length: "d")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +23,12 @@ class BookTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as! BookTableViewCell
 
         let book = books[indexPath.row]
-        cell.textLabel?.text = book.title
-        cell.detailTextLabel?.text = book.description
+        cell.update(with: book)
+//        cell.textLabel?.text = book.title
+//        cell.detailTextLabel?.text = book.description
 
         return cell
     }

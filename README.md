@@ -16,4 +16,4 @@ All starter projects are found in Apple's [Student materials](https://education-
 - [x] Step 1. Create a Static Table View
 - [x] Step 2. Replace `BookFormViewController​` with `BookFormTableViewController`
 - [x] Step 3. Delete Books
-- [ ] Step 4. Create a Custom Book Cell
+- [x] Step 4. Create a Custom Book Cell
