@@ -1,4 +1,4 @@
-# Lab — Home Furniture sharing
+# Lab — Home Furniture Sharing
 
 > Objective: The objective of this lab is to use system view controllers in an app that lists rooms and furniture and allows users to share furniture items with other apps on their device.
 >
@@ -10,8 +10,9 @@
 >
 > Pages 192-194
 
-## TODO:
+---
+TO DO:
 
-- [ ] Step 1. Add a `UIAlertController`
+- [x] Step 1. Add a `UIAlertController`
 - [ ] Step 2. Add a `UIImagePickerController`
 - [ ] Step 3. Share Furniture with the `UIActivityViewController`

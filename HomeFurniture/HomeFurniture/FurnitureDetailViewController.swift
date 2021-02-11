@@ -39,7 +39,21 @@ class FurnitureDetailViewController: UIViewController {
     }
     
     @IBAction func choosePhotoButtonTapped(_ sender: Any) {
-        
+        let ac = UIAlertController(title: "Choose image upload method", message: nil, preferredStyle: .actionSheet)
+
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            ac.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action) in
+
+            }))
+        }
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+
+            }))
+        }
+        ac.addAction(UIAlertAction(title: "Cancel", style: .default))
+
+        present(ac, animated: true)
     }
 
     @IBAction func actionButtonTapped(_ sender: Any) {
