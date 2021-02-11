@@ -75,7 +75,13 @@ class FurnitureDetailViewController: UIViewController, UIImagePickerControllerDe
     }
 
     @IBAction func actionButtonTapped(_ sender: Any) {
-        
+        guard let image = photoImageView.image,
+              let furniture = furniture else { return }
+
+        let items: [Any] = [image, furniture.name]
+        let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(activityController, animated: true)
+
     }
     
 }

@@ -15,4 +15,4 @@ TO DO:
 
 - [x] Step 1. Add a `UIAlertController`
 - [x] Step 2. Add a `UIImagePickerController`
-- [ ] Step 3. Share Furniture with the `UIActivityViewController`
+- [x] Step 3. Share Furniture with the `UIActivityViewController`
