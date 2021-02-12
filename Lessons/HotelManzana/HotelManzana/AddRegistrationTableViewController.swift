@@ -46,18 +46,42 @@ class AddRegistrationTableViewController: UITableViewController {
         switch indexPath {
         case checkInDatePickerCellIndexPath where
             isCheckInDatePickerVisible == false:
-            print("a")
             return 0
         case checkOutDatePickerCellIndexPath where
             isCheckOutDatePickerVisible == false:
-            print("b")
             return 0
         default:
             return UITableView.automaticDimension
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath == checkInDateLabelCellIndexPath && isCheckOutDatePickerVisible == false {
+            // check-in label selected, check-out picker is not
+            // visible, toggle check-in picker”
+            isCheckInDatePickerVisible.toggle()
+        } else if indexPath == checkOutDateLabelCellIndexPath && isCheckInDatePickerVisible == false {
+            // check-out label selected, check-in picker is not
+            // visible, toggle check-out picker”
+            isCheckOutDatePickerVisible.toggle()
+        } else if indexPath == checkInDateLabelCellIndexPath
+            || indexPath == checkOutDateLabelCellIndexPath
+        {
+            // either label was selected, previous conditions failed
+            // meaning at least one picker is visible, toggle both”
+            isCheckOutDatePickerVisible.toggle()
+            isCheckInDatePickerVisible.toggle()
+        } else {
+            return
+        }
+
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+
+    let checkInDateLabelCellIndexPath = IndexPath(row: 0, section: 1)
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
+    let checkOutDateLabelCellIndexPath = IndexPath(row: 2, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
 
     var isCheckInDatePickerVisible: Bool = false {
