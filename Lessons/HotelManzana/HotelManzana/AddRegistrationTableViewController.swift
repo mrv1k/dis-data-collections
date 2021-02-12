@@ -12,11 +12,6 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var lastNameField: UITextField!
     @IBOutlet var emailField: UITextField!
 
-    @IBOutlet var checkInDateLabel: UILabel!
-    @IBOutlet var checkInDatePicker: UIDatePicker!
-    @IBOutlet var checkOutDateLabel: UILabel!
-    @IBOutlet var checkOutDatePicker: UIDatePicker!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +20,7 @@ class AddRegistrationTableViewController: UITableViewController {
         checkInDatePicker.date = midnightToday
 
         updateDateViews()
+        updateNumberOfGuests()
     }
 
     @IBAction func onDoneBarButtonTap(_ sender: UIBarButtonItem) {
@@ -33,6 +29,9 @@ class AddRegistrationTableViewController: UITableViewController {
         let email = emailField.text ?? ""
         let checkIn = checkInDatePicker.date
         let checkOut = checkOutDatePicker.date
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren = Int(numberOfChildrenStepper.value)
+        let hasWifi = wifiSwitch.isOn
 
         print("Done tapped")
         print("firstName:", firstName)
@@ -40,43 +39,24 @@ class AddRegistrationTableViewController: UITableViewController {
         print("email:", email)
         print("checkIn:", checkIn)
         print("checkOut:", checkOut)
+        print("numberOfAdults:", numberOfAdults)
+        print("numberOfChildren:", numberOfChildren)
+        print("hasWifi:", hasWifi)
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath {
-        case checkInDatePickerCellIndexPath where
-            isCheckInDatePickerVisible == false:
-            return 0
-        case checkOutDatePickerCellIndexPath where
-            isCheckOutDatePickerVisible == false:
-            return 0
-        default:
-            return UITableView.automaticDimension
-        }
+    @IBOutlet var checkInDateLabel: UILabel!
+    @IBOutlet var checkInDatePicker: UIDatePicker!
+    @IBOutlet var checkOutDateLabel: UILabel!
+    @IBOutlet var checkOutDatePicker: UIDatePicker!
+
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        updateDateViews()
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath == checkInDateLabelCellIndexPath && isCheckOutDatePickerVisible == false {
-            // check-in label selected, check-out picker is not
-            // visible, toggle check-in picker”
-            isCheckInDatePickerVisible.toggle()
-        } else if indexPath == checkOutDateLabelCellIndexPath && isCheckInDatePickerVisible == false {
-            // check-out label selected, check-in picker is not
-            // visible, toggle check-out picker”
-            isCheckOutDatePickerVisible.toggle()
-        } else if indexPath == checkInDateLabelCellIndexPath
-            || indexPath == checkOutDateLabelCellIndexPath
-        {
-            // either label was selected, previous conditions failed
-            // meaning at least one picker is visible, toggle both”
-            isCheckOutDatePickerVisible.toggle()
-            isCheckInDatePickerVisible.toggle()
-        } else {
-            return
-        }
-
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    func updateDateViews() {
+        checkOutDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: checkInDatePicker.date)
+        checkInDateLabel.text = dateFormatter.string(from: checkInDatePicker.date)
+        checkOutDateLabel.text = dateFormatter.string(from: checkOutDatePicker.date)
     }
 
     let checkInDateLabelCellIndexPath = IndexPath(row: 0, section: 1)
@@ -92,8 +72,39 @@ class AddRegistrationTableViewController: UITableViewController {
         didSet { checkOutDatePicker.isHidden = !isCheckOutDatePickerVisible }
     }
 
-    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
-        updateDateViews()
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath {
+        case checkInDatePickerCellIndexPath where isCheckInDatePickerVisible == false:
+            return 0
+        case checkOutDatePickerCellIndexPath where isCheckOutDatePickerVisible == false:
+            return 0
+        default:
+            return UITableView.automaticDimension
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        if indexPath == checkInDateLabelCellIndexPath && isCheckOutDatePickerVisible == false {
+            // check-in label selected, check-out picker is not
+            // visible, toggle check-in picker”
+            isCheckInDatePickerVisible.toggle()
+        } else if indexPath == checkOutDateLabelCellIndexPath && isCheckInDatePickerVisible == false {
+            // check-out label selected, check-in picker is not
+            // visible, toggle check-out picker”
+            isCheckOutDatePickerVisible.toggle()
+        } else if indexPath == checkInDateLabelCellIndexPath || indexPath == checkOutDateLabelCellIndexPath {
+            // either label was selected, previous conditions failed
+            // meaning at least one picker is visible, toggle both”
+            isCheckInDatePickerVisible.toggle()
+            isCheckOutDatePickerVisible.toggle()
+        } else {
+            return
+        }
+
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 
     lazy var dateFormatter: DateFormatter = {
@@ -102,9 +113,22 @@ class AddRegistrationTableViewController: UITableViewController {
         return dateFormatter
     }()
 
-    func updateDateViews() {
-        checkOutDatePicker.minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: checkInDatePicker.date)
-        checkInDateLabel.text = dateFormatter.string(from: checkInDatePicker.date)
-        checkOutDateLabel.text = dateFormatter.string(from: checkOutDatePicker.date)
+    @IBOutlet var numberOfAdultsLabel: UILabel!
+    @IBOutlet var numberOfAdultsStepper: UIStepper!
+    @IBOutlet var numberOfChildrenLabel: UILabel!
+    @IBOutlet var numberOfChildrenStepper: UIStepper!
+
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        updateNumberOfGuests()
+    }
+
+    func updateNumberOfGuests() {
+        numberOfAdultsLabel.text = String(Int(numberOfAdultsStepper.value))
+        numberOfChildrenLabel.text = String(Int(numberOfChildrenStepper.value))
+    }
+
+    @IBOutlet var wifiSwitch: UISwitch!
+    @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
+        // TODO:
     }
 }
