@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddRegistrationTableViewController: UITableViewController {
+class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeTableViewControllerDelegate {
     @IBOutlet var firstNameField: UITextField!
     @IBOutlet var lastNameField: UITextField!
     @IBOutlet var emailField: UITextField!
@@ -21,6 +21,7 @@ class AddRegistrationTableViewController: UITableViewController {
 
         updateDateViews()
         updateNumberOfGuests()
+        updateRoomType()
     }
 
     @IBAction func onDoneBarButtonTap(_ sender: UIBarButtonItem) {
@@ -32,6 +33,7 @@ class AddRegistrationTableViewController: UITableViewController {
         let numberOfAdults = Int(numberOfAdultsStepper.value)
         let numberOfChildren = Int(numberOfChildrenStepper.value)
         let hasWifi = wifiSwitch.isOn
+        let roomChoice = roomType?.name ?? "Not Set"
 
         print("Done tapped")
         print("firstName:", firstName)
@@ -42,6 +44,7 @@ class AddRegistrationTableViewController: UITableViewController {
         print("numberOfAdults:", numberOfAdults)
         print("numberOfChildren:", numberOfChildren)
         print("hasWifi:", hasWifi)
+        print("roomChoice:", roomChoice)
     }
 
     @IBOutlet var checkInDateLabel: UILabel!
@@ -130,5 +133,25 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var wifiSwitch: UISwitch!
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
         // TODO:
+    }
+
+    @IBOutlet var roomTypeLabel: UILabel!
+    var roomType: RoomType?
+
+    func updateRoomType() {
+        roomTypeLabel.text = (roomType != nil) ? roomType!.name : "Not Set"
+    }
+
+    func selectRoomTypeTableViewController(_ controller: SelectRoomTypeTableViewController, didSelect roomType: RoomType) {
+        self.roomType = roomType
+        updateRoomType()
+    }
+
+    @IBSegueAction func selectRoomType(_ coder: NSCoder) -> SelectRoomTypeTableViewController? {
+        let selectRoomTypeController = SelectRoomTypeTableViewController(coder: coder)
+        selectRoomTypeController?.delegate = self
+        selectRoomTypeController?.roomType = roomType
+
+        return selectRoomTypeController
     }
 }
