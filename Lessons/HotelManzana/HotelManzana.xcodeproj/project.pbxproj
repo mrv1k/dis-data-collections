@@ -16,6 +16,7 @@
 		57504A6125D5EFE400DE994B /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57504A6025D5EFE400DE994B /* RoomType.swift */; };
 		57504A6425D5F82200DE994B /* AddRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57504A6325D5F82200DE994B /* AddRegistrationTableViewController.swift */; };
 		579EFE0725D733C500F17BF6 /* SelectRoomTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579EFE0625D733C500F17BF6 /* SelectRoomTypeTableViewController.swift */; };
+		57F4CB7425D8159B00DEC072 /* RegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F4CB7325D8159B00DEC072 /* RegistrationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		57504A6025D5EFE400DE994B /* RoomType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 		57504A6325D5F82200DE994B /* AddRegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTableViewController.swift; sourceTree = "<group>"; };
 		579EFE0625D733C500F17BF6 /* SelectRoomTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoomTypeTableViewController.swift; sourceTree = "<group>"; };
+		57F4CB7325D8159B00DEC072 /* RegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				57504A4925D5EF0E00DE994B /* SceneDelegate.swift */,
 				57504A5D25D5EFD600DE994B /* Registration.swift */,
 				57504A4D25D5EF0E00DE994B /* Main.storyboard */,
+				57F4CB7325D8159B00DEC072 /* RegistrationTableViewController.swift */,
 				579EFE0625D733C500F17BF6 /* SelectRoomTypeTableViewController.swift */,
 				57504A5025D5EF0E00DE994B /* Assets.xcassets */,
 				57504A5225D5EF0E00DE994B /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 				57504A4825D5EF0E00DE994B /* AppDelegate.swift in Sources */,
 				57504A5E25D5EFD600DE994B /* Registration.swift in Sources */,
 				57504A4A25D5EF0E00DE994B /* SceneDelegate.swift in Sources */,
+				57F4CB7425D8159B00DEC072 /* RegistrationTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

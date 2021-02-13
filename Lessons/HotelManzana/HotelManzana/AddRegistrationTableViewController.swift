@@ -24,29 +24,6 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         updateRoomType()
     }
 
-    @IBAction func onDoneBarButtonTap(_ sender: UIBarButtonItem) {
-        let firstName = firstNameField.text ?? ""
-        let lastName = lastNameField.text ?? ""
-        let email = emailField.text ?? ""
-        let checkIn = checkInDatePicker.date
-        let checkOut = checkOutDatePicker.date
-        let numberOfAdults = Int(numberOfAdultsStepper.value)
-        let numberOfChildren = Int(numberOfChildrenStepper.value)
-        let hasWifi = wifiSwitch.isOn
-        let roomChoice = roomType?.name ?? "Not Set"
-
-        print("Done tapped")
-        print("firstName:", firstName)
-        print("lastName:", lastName)
-        print("email:", email)
-        print("checkIn:", checkIn)
-        print("checkOut:", checkOut)
-        print("numberOfAdults:", numberOfAdults)
-        print("numberOfChildren:", numberOfChildren)
-        print("hasWifi:", hasWifi)
-        print("roomChoice:", roomChoice)
-    }
-
     @IBOutlet var checkInDateLabel: UILabel!
     @IBOutlet var checkInDatePicker: UIDatePicker!
     @IBOutlet var checkOutDateLabel: UILabel!
@@ -153,5 +130,33 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
         selectRoomTypeController?.roomType = roomType
 
         return selectRoomTypeController
+    }
+
+    var registration: Registration? {
+        guard let roomType = roomType else { return nil }
+
+        let firstName = firstNameField.text ?? ""
+        let lastName = lastNameField.text ?? ""
+        let email = emailField.text ?? ""
+        let checkInDate = checkInDatePicker.date
+        let checkOutDate = checkOutDatePicker.date
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren = Int(numberOfChildrenStepper.value)
+        let hasWifi = wifiSwitch.isOn
+
+        return Registration(
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            checkInDate: checkInDate,
+            checkOutDate: checkOutDate,
+            numberOfAdults: numberOfAdults,
+            numberOfChildren: numberOfChildren,
+            wifi: hasWifi,
+            roomType: roomType)
+    }
+
+    @IBAction func onCancelButtonTap(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
     }
 }
